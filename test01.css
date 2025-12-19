@@ -1,0 +1,181 @@
+* { box-sizing: border-box; margin:0; padding:0; }
+
+/* -------------------- Full-Screen Philippine Map Background -------------------- */
+body {
+  height: 100%;
+  background: url('Philmap.png') no-repeat center center fixed;
+  background-size: cover;
+  font-family: "Poppins", sans-serif;
+}
+
+/* -------------------- Map Area Container -------------------- */
+.map-area {
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* -------------------- Top Interface (Header) -------------------- */
+header {
+  display:flex; justify-content:space-between; align-items:center;
+  padding:10px 20px; position:fixed; top:0; left:0; width:100%; z-index:1002;
+  background-image: url('interfacetexture.jpg'); 
+  background-size: cover;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.3);
+}
+
+/* Logo circle with image fully filling */
+.logo-circle { 
+  width:45px; 
+  height:45px; 
+  border-radius:50%; 
+  display:flex; 
+  align-items:center; 
+  justify-content:center; 
+  overflow: hidden;
+  padding: 0; 
+  background: none; 
+  cursor: pointer;
+}
+.logo-circle img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; 
+}
+
+.right-section { display:flex; align-items:center; gap:8px; position: relative; }
+.right-section button { 
+  padding:8px 12px; border:none; border-radius:8px; cursor:pointer; 
+  background:rgba(255,255,255,0.6); 
+  font-size:1rem; font-weight: normal; color:#1e293b; text-align: left;
+}
+.right-section button:hover { background:rgba(255,255,255,0.8); }
+
+#searchInput { 
+  display: none; 
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  right: 70px;
+  padding:6px 10px; 
+  border-radius:6px; 
+  border:1px solid #cbd5e1; 
+  width:140px; 
+  font-size:1rem; 
+  font-weight: normal; 
+  color:#1e293b; 
+}
+
+/* -------------------- Menu Interface (Sidebar) -------------------- */
+aside {
+  position: fixed;
+  top: 60px;
+  right: 0;
+  width: 250px;
+  height: calc(100% - 60px);
+  transform: translateX(260px);
+  transition: transform 0.3s ease;
+  z-index: 1001;
+  padding: 15px;
+  background-image: url('interfacetexture.jpg');
+  background-size: cover;
+  color: white;
+  text-align: center;
+  overflow-y: auto; /* make sidebar scrollable */
+}
+
+aside h2 {
+  font-size: 1rem;
+  text-align: left;
+  margin-bottom: 15px;
+}
+
+aside .menu-item {
+  font-size: 1.1rem;
+  font-family: "Poppins", sans-serif;
+  font-weight: normal;
+  text-align: center;
+  display: block;
+  width: 100%;
+  padding: 8px 0;
+  margin-bottom: 5px;
+  border-radius: 6px;
+  cursor: pointer;
+  background: none;
+  border: none;
+  -webkit-text-stroke: 1px black;
+  text-shadow:
+     1px 1px 0 black,
+    -1px 1px 0 black,
+     1px -1px 0 black,
+    -1px -1px 0 black;
+}
+
+aside.show { transform: translateX(0); }
+
+#overlay { position:fixed; top:60px; left:0; width:100%; height:calc(100%-60px); background: rgba(0,0,0,0.4); display:none; z-index:1000; }
+
+/* -------------------- Philip image & bubble -------------------- */
+#philip {
+  position: fixed;
+  bottom: 20px;
+  left: 20px;
+  width: 100px;
+  height: 100px;
+  cursor: pointer;
+  z-index: 1003;
+}
+#philip img { width: 100%; height: 100%; border-radius: 50%; }
+
+#philipBubble {
+  position: fixed;
+  bottom: 130px; 
+  left: 20px;
+  padding: 10px 15px;
+  border-radius: 20px;
+  max-width: 250px;
+  z-index: 1004;
+  display: none;
+  text-align: center;
+  font-family: Arial, sans-serif;
+  font-size: 1rem;
+  font-weight: normal;
+  color: black;
+  background-color: white;
+  border: 1px solid #ccc;
+  box-shadow: 1px 1px 5px rgba(0,0,0,0.2);
+}
+
+/* -------------------- Logo Popup -------------------- */
+#logoPopup {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.6);
+  display: none;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  z-index: 2000;
+}
+
+#logoPopup img {
+  width: 250px;
+  height: 250px;
+  object-fit: cover;
+  border-radius: 20px;
+  margin-bottom: 15px;
+}
+
+#logoPopup p {
+  color: white;
+  font-size: 2rem;
+  font-family: Arial, sans-serif;
+  font-weight: bold;
+  text-align: center;
+  margin: 0;
+}
