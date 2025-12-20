@@ -19,56 +19,75 @@ body {
 
 /* -------------------- Top Interface (Header) -------------------- */
 header {
-  display:flex; justify-content:space-between; align-items:center;
-  padding:10px 20px; position:fixed; top:0; left:0; width:100%; z-index:1002;
-  background-image: url('interfacetexture.jpg'); 
+  display:flex; 
+  justify-content:space-between; 
+  align-items:center;
+  padding:10px 20px; 
+  position:fixed; 
+  top:0; 
+  left:0; 
+  width:100%; 
+  z-index:1002;
+  background-image: url('interfacetexture.jpg');
   background-size: cover;
   box-shadow: 0 2px 5px rgba(0,0,0,0.3);
 }
 
-/* Logo circle with image fully filling */
-.logo-circle { 
-  width:45px; 
-  height:45px; 
-  border-radius:50%; 
-  display:flex; 
-  align-items:center; 
-  justify-content:center; 
+/* Logo circle */
+.logo-circle {
+  width:45px;
+  height:45px;
+  border-radius:50%;
+  display:flex;
+  align-items:center;
+  justify-content:center;
   overflow: hidden;
-  padding: 0; 
-  background: none; 
   cursor: pointer;
 }
 .logo-circle img {
   width: 100%;
   height: 100%;
-  object-fit: cover; 
+  object-fit: cover;
 }
 
-.right-section { display:flex; align-items:center; gap:8px; position: relative; }
-.right-section button { 
-  padding:8px 12px; border:none; border-radius:8px; cursor:pointer; 
-  background:rgba(255,255,255,0.6); 
-  font-size:1rem; font-weight: normal; color:#1e293b; text-align: left;
+/* Header right section buttons */
+.right-section { 
+  display:flex; 
+  align-items:center; 
+  gap:8px; 
+  position: relative; 
 }
-.right-section button:hover { background:rgba(255,255,255,0.8); }
+.right-section button {
+  padding:8px 12px; 
+  border:none; 
+  border-radius:8px; 
+  cursor:pointer;
+  background:rgba(255,255,255,0.6);
+  font-size:1rem; 
+  font-weight: normal; 
+  color:#1e293b; 
+  text-align: left;
+}
+.right-section button:hover { 
+  background:rgba(255,255,255,0.8); 
+}
 
-#searchInput { 
-  display: none; 
+#searchInput {
+  display: none;
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
   right: 70px;
-  padding:6px 10px; 
-  border-radius:6px; 
-  border:1px solid #cbd5e1; 
-  width:140px; 
-  font-size:1rem; 
-  font-weight: normal; 
-  color:#1e293b; 
+  padding:6px 10px;
+  border-radius:6px;
+  border:1px solid #cbd5e1;
+  width:140px;
+  font-size:1rem;
+  font-weight: normal;
+  color:#1e293b;
 }
 
-/* -------------------- Menu Interface (Sidebar) -------------------- */
+/* -------------------- Sidebar -------------------- */
 aside {
   position: fixed;
   top: 60px;
@@ -81,15 +100,25 @@ aside {
   padding: 15px;
   background-image: url('interfacetexture.jpg');
   background-size: cover;
-  color: white;
   text-align: center;
   overflow-y: auto; /* make sidebar scrollable */
+  box-shadow: -2px 0 5px rgba(0,0,0,0.3);
 }
+
+aside.show { transform: translateX(0); }
 
 aside h2 {
   font-size: 1rem;
   text-align: left;
   margin-bottom: 15px;
+  font-weight: bold;
+  color: white;
+  -webkit-text-stroke: 0.5px black;
+  text-shadow:
+    1px 1px 0 black,
+    -1px 1px 0 black,
+    1px -1px 0 black,
+    -1px -1px 0 black;
 }
 
 aside .menu-item {
@@ -105,17 +134,32 @@ aside .menu-item {
   cursor: pointer;
   background: none;
   border: none;
+  color: white; /* ensures white fill */
   -webkit-text-stroke: 1px black;
   text-shadow:
-     1px 1px 0 black,
+    1px 1px 0 black,
     -1px 1px 0 black,
-     1px -1px 0 black,
+    1px -1px 0 black,
     -1px -1px 0 black;
+  transition: background 0.2s, transform 0.2s;
 }
 
-aside.show { transform: translateX(0); }
+aside .menu-item:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+  transform: translateX(-3px);
+}
 
-#overlay { position:fixed; top:60px; left:0; width:100%; height:calc(100%-60px); background: rgba(0,0,0,0.4); display:none; z-index:1000; }
+/* -------------------- Overlay -------------------- */
+#overlay { 
+  position:fixed; 
+  top:60px; 
+  left:0; 
+  width:100%; 
+  height:calc(100% - 60px); 
+  background: rgba(0,0,0,0.4); 
+  display:none; 
+  z-index:1000; 
+}
 
 /* -------------------- Philip image & bubble -------------------- */
 #philip {
@@ -127,11 +171,15 @@ aside.show { transform: translateX(0); }
   cursor: pointer;
   z-index: 1003;
 }
-#philip img { width: 100%; height: 100%; border-radius: 50%; }
+#philip img { 
+  width: 100%; 
+  height: 100%; 
+  border-radius: 50%; 
+}
 
 #philipBubble {
   position: fixed;
-  bottom: 130px; 
+  bottom: 130px;
   left: 20px;
   padding: 10px 15px;
   border-radius: 20px;
